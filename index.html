@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d19">
+  <title>CSS Border Corner Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <h1>CSS Border Corner Animation</h1>
+    </header>
+
+    <section class="examples" aria-label="CSS border corner animation examples">
+      <article class="example-card">
+        <div class="card-heading"><h2>Growing Corner Border</h2><span>Hover effect</span></div>
+        <div class="preview">
+          <div class="demo-box growing"><span>Hover me</span></div>
+        </div>
+        <pre><code>.box::before,
+.box::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 3px solid #38bdf8;
+  transition: .45s ease;
+}
+.box::before {
+  top: 14px;
+  left: 14px;
+  border-right: none;
+  border-bottom: none;
+}
+.box::after {
+  bottom: 14px;
+  right: 14px;
+  border-left: none;
+  border-top: none;
+}
+.box:hover::before,
+.box:hover::after {
+  width: 188px;
+  height: 108px;
+}</code></pre>
+      </article>
+
+      <article class="example-card">
+        <div class="card-heading"><h2>Rotating Gradient Border</h2><span>Infinite</span></div>
+        <div class="preview">
+          <div class="demo-box rotating"><span>Rotating</span></div>
+        </div>
+        <pre><code>.box::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: conic-gradient(
+    #22d3ee, #8b5cf6, #22d3ee
+  );
+  animation: spin 3s linear infinite;
+}
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  background: #111827;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}</code></pre>
+      </article>
+
+      <article class="example-card">
+        <div class="card-heading"><h2>Pulsing Corner Lines</h2><span>Infinite</span></div>
+        <div class="preview">
+          <div class="demo-box pulsing"><span>Pulse</span></div>
+        </div>
+        <pre><code>.box::before,
+.box::after {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border: 3px solid #f59e0b;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: .4;
+  }
+}</code></pre>
+      </article>
+
+      <article class="example-card">
+        <div class="card-heading"><h2>Diagonal Corner Accent</h2><span>Infinite</span></div>
+        <div class="preview">
+          <div class="demo-box diagonal"><span>Diagonal</span></div>
+        </div>
+        <pre><code>.box::before,
+.box::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 3px;
+  background: #22c55e;
+  animation: diag 2s ease-in-out infinite;
+}
+.box::before {
+  top: 20px;
+  left: -18px;
+  transform: rotate(45deg);
+}
+.box::after {
+  bottom: 20px;
+  right: -18px;
+  transform: rotate(45deg);
+}</code></pre>
+      </article>
+
+      <article class="example-card">
+        <div class="card-heading"><h2>Neon Corner Glow</h2><span>Infinite</span></div>
+        <div class="preview">
+          <div class="demo-box neon"><span>Neon</span></div>
+        </div>
+        <pre><code>.box::before,
+.box::after {
+  content: "";
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border: 3px solid #ec4899;
+  filter: drop-shadow(0 0 10px #ec4899)
+          drop-shadow(0 0 18px #ec4899);
+  animation: neon 1.6s linear infinite alternate;
+}</code></pre>
+      </article>
+    </section>
+
+    <footer class="page-footer">
+      <span>HTML · CSS · VANILLA JS</span>
+      <button id="motionToggle" type="button" aria-pressed="false">Pause animations</button>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
